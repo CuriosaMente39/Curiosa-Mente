@@ -1,83 +1,150 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#11245f" />
-  <meta name="description" content="Jogo da memória de Neuroanatomia para pessoas 60+, acessível e instalável." />
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="assets/icons/icon-192.png" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Neuro Memória 60+</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071a38">
+  <meta name="description" content="NeuroQuiz 60+: quiz acessível de neuroanatomia, instalável e offline.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>NeuroQuiz 60+</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192x192.png">
 </head>
 <body>
-  <a class="skip-link" href="#gameBoard">Ir para o jogo</a>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
 
-  <div class="app-shell">
-    <header class="hero" aria-labelledby="gameTitle">
-      <div class="brain-orbit" aria-hidden="true">
-        <div class="brain-core">🧠</div>
-        <span class="orbit orbit-one"></span>
-        <span class="orbit orbit-two"></span>
-      </div>
-      <div>
-        <p class="eyebrow">Neuroanatomia • Memória • 60+</p>
-        <h1 id="gameTitle">Neuro Memória 3D</h1>
-        <p>Encontre os pares de imagens e avance pelas três fases.</p>
-      </div>
-    </header>
+  <header class="topbar" aria-label="Barra de acessibilidade">
+    <div class="brand">
+      <img src="assets/icons/icon-192x192.png" alt="" width="44" height="44">
+      <span>NeuroQuiz 60+</span>
+    </div>
+    <div class="access-tools">
+      <button id="btn-font-down" class="icon-btn" aria-label="Diminuir texto">A−</button>
+      <button id="btn-font-up" class="icon-btn" aria-label="Aumentar texto">A+</button>
+      <button id="btn-contrast" class="icon-btn" aria-pressed="false">Contraste</button>
+      <button id="btn-sound" class="icon-btn" aria-pressed="true">🔊 Som</button>
+      <button id="btn-install" class="install-btn" hidden>Instalar</button>
+    </div>
+  </header>
 
-    <section class="toolbar" aria-label="Controles de acessibilidade">
-      <button id="decreaseText" class="control-btn" aria-label="Diminuir tamanho do texto">A−</button>
-      <button id="increaseText" class="control-btn" aria-label="Aumentar tamanho do texto">A+</button>
-      <button id="contrastBtn" class="control-btn" aria-pressed="false">Alto contraste</button>
-      <button id="soundBtn" class="control-btn" aria-pressed="true">🔊 Som ligado</button>
-      <button id="instructionsBtn" class="control-btn">Como jogar</button>
+  <main id="main-content">
+    <section id="screen-home" class="screen active" aria-labelledby="home-title">
+      <div class="hero-card glass">
+        <img class="hero-image" src="assets/img/capa-neuro.png" alt="Robô Neuro ao lado de um cérebro holográfico, capa do jogo educativo 60+">
+        <div class="hero-copy">
+          <p class="eyebrow">Aprender, lembrar e se divertir</p>
+          <h1 id="home-title">NeuroQuiz 60+</h1>
+          <p>Quiz de neuroanatomia com letras grandes, áudio, explicações simples e funcionamento offline.</p>
+          <div class="hero-actions">
+            <button id="btn-start" class="primary-btn">▶ Iniciar quiz</button>
+            <button id="btn-functions" class="secondary-btn">🧠 Conhecer o cérebro</button>
+          </div>
+          <ul class="feature-list" aria-label="Recursos do aplicativo">
+            <li>3 fases e 15 perguntas</li>
+            <li>Leitura das perguntas em voz alta</li>
+            <li>Sem cronômetro e sem pressa</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <main>
-      <section class="status-panel" aria-label="Informações da partida">
-        <div><span>Fase</span><strong id="phaseLabel">1 de 3</strong></div>
-        <div><span>Pares</span><strong id="pairsLabel">0 / 2</strong></div>
-        <div><span>Tentativas</span><strong id="attemptsLabel">0</strong></div>
-        <div><span>Tempo</span><strong id="timerLabel">00:00</strong></div>
-      </section>
-
-      <div class="progress-track" aria-label="Progresso da fase">
-        <div id="progressBar" class="progress-bar"></div>
+    <section id="screen-functions" class="screen" aria-labelledby="functions-title">
+      <div class="panel glass">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Antes de jogar</p>
+            <h2 id="functions-title">Principais regiões do cérebro</h2>
+          </div>
+          <button class="secondary-btn btn-home">← Voltar</button>
+        </div>
+        <img class="learning-image" src="assets/img/funco-neuro.png" alt="Infográfico das regiões frontal, parietal, temporal, occipital, cerebelo e tronco encefálico">
+        <div class="center-actions">
+          <button id="btn-read-functions" class="secondary-btn">🔊 Ouvir resumo</button>
+          <button id="btn-start-from-functions" class="primary-btn">Começar o quiz</button>
+        </div>
       </div>
+    </section>
 
-      <p id="liveMessage" class="live-message" role="status" aria-live="polite">Selecione duas cartas.</p>
+    <section id="screen-quiz" class="screen" aria-labelledby="quiz-title">
+      <div class="quiz-layout">
+        <aside class="robot-panel glass" aria-label="Assistente Robo-Neuro">
+          <img src="assets/img/robo-neuro.png" alt="Robo-Neuro, assistente virtual do jogo">
+          <p id="robot-message" aria-live="polite">Estou pronto para aprender com você!</p>
+        </aside>
 
-      <section id="gameBoard" class="game-board" aria-label="Tabuleiro do jogo da memória"></section>
+        <section class="quiz-card glass">
+          <div class="quiz-header">
+            <div>
+              <span id="phase-label" class="phase-badge">Fase 1</span>
+              <h2 id="quiz-title">Pergunta <span id="question-number">1</span> de <span id="question-total">15</span></h2>
+            </div>
+            <div class="score-box" aria-label="Pontuação">
+              <span>Pontos</span>
+              <strong id="score">0</strong>
+            </div>
+          </div>
 
-      <section class="action-area">
-        <button id="restartBtn" class="primary-btn">Reiniciar fase</button>
-      </section>
-    </main>
-  </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="15" aria-valuenow="1" aria-label="Progresso do quiz">
+            <div id="progress-bar"></div>
+          </div>
 
-  <dialog id="instructionsDialog" aria-labelledby="instructionsTitle">
-    <h2 id="instructionsTitle">Como jogar</h2>
-    <p>Escolha duas cartas. Quando as imagens forem iguais, o par permanece visível.</p>
-    <p>As fases começam com poucos pares e aumentam gradualmente. Não há limite de erros.</p>
-    <button id="closeInstructions" class="primary-btn">Entendi</button>
-  </dialog>
+          <img id="question-image" class="question-image" src="assets/img/quiz-neuro.png" alt="Tela ilustrativa do Quiz Neuro">
+          <div class="question-tools">
+            <button id="btn-read-question" class="secondary-btn">🔊 Ouvir pergunta</button>
+            <button id="btn-pause" class="secondary-btn">⏸ Pausar</button>
+          </div>
 
-  <dialog id="phaseDialog" class="celebration-dialog" aria-labelledby="phaseTitle">
-    <div class="celebration-icon" aria-hidden="true">✨🧠✨</div>
-    <h2 id="phaseTitle">Fase concluída!</h2>
-    <p id="phaseSummary"></p>
-    <button id="nextPhaseBtn" class="primary-btn">Próxima fase</button>
-  </dialog>
+          <p id="question-text" class="question-text"></p>
+          <div id="options" class="options-grid" role="group" aria-label="Alternativas"></div>
 
-  <dialog id="victoryDialog" class="celebration-dialog" aria-labelledby="victoryTitle">
-    <div class="celebration-icon" aria-hidden="true">🏆</div>
-    <h2 id="victoryTitle">Parabéns!</h2>
-    <p id="victorySummary">Você concluiu todas as fases.</p>
-    <button id="playAgainBtn" class="primary-btn">Jogar novamente</button>
-  </dialog>
+          <div id="feedback" class="feedback" aria-live="assertive" hidden>
+            <h3 id="feedback-title"></h3>
+            <p id="feedback-text"></p>
+            <button id="btn-next" class="primary-btn">Próxima pergunta</button>
+          </div>
+        </section>
+      </div>
+    </section>
 
+    <section id="screen-pause" class="screen" aria-labelledby="pause-title">
+      <div class="modal-card glass">
+        <img src="assets/img/robo-neuro.png" alt="" class="pause-robot">
+        <h2 id="pause-title">Jogo pausado</h2>
+        <p>Respire com calma. Seu progresso foi guardado neste aparelho.</p>
+        <button id="btn-resume" class="primary-btn">Continuar</button>
+        <button id="btn-restart-pause" class="danger-btn">Recomeçar</button>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen" aria-labelledby="result-title">
+      <div class="result-card glass">
+        <img src="assets/img/trofeu-neuro.png" alt="Troféu Neuro com Robo-Neuro comemorando">
+        <p class="eyebrow">Parabéns por chegar ao final!</p>
+        <h2 id="result-title">Você concluiu o NeuroQuiz</h2>
+        <p id="result-message"></p>
+        <div class="result-score">
+          <span>Resultado</span>
+          <strong><span id="final-score">0</span> / 15</strong>
+        </div>
+        <div class="center-actions">
+          <button id="btn-restart" class="primary-btn">Jogar novamente</button>
+          <button id="btn-share" class="secondary-btn">Compartilhar resultado</button>
+          <button class="secondary-btn btn-home">Início</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Conteúdo educativo. Não substitui avaliação ou orientação profissional em saúde.</p>
+  </footer>
+
+  <audio id="audio-correct" src="assets/audio/acerto.wav" preload="auto"></audio>
+  <audio id="audio-wrong" src="assets/audio/erro.wav" preload="auto"></audio>
+  <audio id="audio-win" src="assets/audio/vitoria.wav" preload="auto"></audio>
+  <audio id="audio-click" src="assets/audio/clique.wav" preload="auto"></audio>
   <script src="app.js"></script>
 </body>
 </html>

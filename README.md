@@ -1,38 +1,37 @@
-# Neuro Memória 60+
+# NeuroQuiz 60+
 
-PWA de jogo da memória de Neuroanatomia, com três fases, acessibilidade e funcionamento offline.
+PWA de quiz de neuroanatomia para o público 60+, com:
 
-## Estrutura dos pares
+- 15 perguntas em 3 fases
+- letras e botões grandes
+- áudio de acerto, erro, clique e vitória
+- leitura por voz usando Speech Synthesis do navegador
+- alto contraste
+- ajuste do tamanho do texto
+- funcionamento offline
+- instalação como aplicativo
+- layout responsivo para celular, tablet e computador
 
-- Fase 1: `1.png` e `2.png`
-- Fase 2: `3.png`, `4.png`, `5.png` e `6.png`
-- Fase 3: `7.png` até `12.png`
+## Estrutura
 
-Cada imagem aparece duas vezes automaticamente no tabuleiro. Portanto, basta colocar uma imagem por número na pasta `assets/img`.
-
-## Áudios obrigatórios
-
-Coloque na pasta `assets/audio`:
-
-- `acerto.mp3`
-- `erro.mp3`
-- `vitoria.mp3`
+- `index.html`
+- `style.css`
+- `app.js`
+- `manifest.json`
+- `sw.js`
+- `assets/img`
+- `assets/audio`
+- `assets/icons`
 
 ## Publicar no GitHub Pages
 
 1. Crie um repositório no GitHub.
-2. Envie todos os arquivos mantendo a estrutura de pastas.
+2. Envie todos os arquivos mantendo a mesma estrutura.
 3. Abra **Settings > Pages**.
-4. Em **Build and deployment**, escolha **Deploy from a branch**.
-5. Selecione a branch `main` e a pasta `/root`.
-6. Salve e abra o endereço fornecido pelo GitHub.
+4. Em **Build and deployment**, selecione **Deploy from a branch**.
+5. Escolha a branch `main` e a pasta `/root`.
+6. Salve e aguarde o link do GitHub Pages.
 
-## Acessibilidade incluída
+## Observação
 
-- Letras grandes e ajustáveis.
-- Botões amplos.
-- Alto contraste.
-- Navegação por teclado.
-- Mensagens por leitor de tela.
-- Sem limite de erros ou tempo.
-- Respeito à preferência de redução de movimento.
+O Service Worker funciona em HTTPS ou em `localhost`. No GitHub Pages, o HTTPS já é fornecido.
