@@ -1,0 +1,2 @@
+Adicione nesta pasta os arquivos 1.png até 12.png.
+Cada arquivo será duplicado automaticamente para formar seu par.

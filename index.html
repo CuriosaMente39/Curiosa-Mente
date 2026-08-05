@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#11245f" />
+  <meta name="description" content="Jogo da memória de Neuroanatomia para pessoas 60+, acessível e instalável." />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Neuro Memória 60+</title>
+</head>
+<body>
+  <a class="skip-link" href="#gameBoard">Ir para o jogo</a>
+
+  <div class="app-shell">
+    <header class="hero" aria-labelledby="gameTitle">
+      <div class="brain-orbit" aria-hidden="true">
+        <div class="brain-core">🧠</div>
+        <span class="orbit orbit-one"></span>
+        <span class="orbit orbit-two"></span>
+      </div>
+      <div>
+        <p class="eyebrow">Neuroanatomia • Memória • 60+</p>
+        <h1 id="gameTitle">Neuro Memória 3D</h1>
+        <p>Encontre os pares de imagens e avance pelas três fases.</p>
+      </div>
+    </header>
+
+    <section class="toolbar" aria-label="Controles de acessibilidade">
+      <button id="decreaseText" class="control-btn" aria-label="Diminuir tamanho do texto">A−</button>
+      <button id="increaseText" class="control-btn" aria-label="Aumentar tamanho do texto">A+</button>
+      <button id="contrastBtn" class="control-btn" aria-pressed="false">Alto contraste</button>
+      <button id="soundBtn" class="control-btn" aria-pressed="true">🔊 Som ligado</button>
+      <button id="instructionsBtn" class="control-btn">Como jogar</button>
+    </section>
+
+    <main>
+      <section class="status-panel" aria-label="Informações da partida">
+        <div><span>Fase</span><strong id="phaseLabel">1 de 3</strong></div>
+        <div><span>Pares</span><strong id="pairsLabel">0 / 2</strong></div>
+        <div><span>Tentativas</span><strong id="attemptsLabel">0</strong></div>
+        <div><span>Tempo</span><strong id="timerLabel">00:00</strong></div>
+      </section>
+
+      <div class="progress-track" aria-label="Progresso da fase">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+
+      <p id="liveMessage" class="live-message" role="status" aria-live="polite">Selecione duas cartas.</p>
+
+      <section id="gameBoard" class="game-board" aria-label="Tabuleiro do jogo da memória"></section>
+
+      <section class="action-area">
+        <button id="restartBtn" class="primary-btn">Reiniciar fase</button>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="instructionsDialog" aria-labelledby="instructionsTitle">
+    <h2 id="instructionsTitle">Como jogar</h2>
+    <p>Escolha duas cartas. Quando as imagens forem iguais, o par permanece visível.</p>
+    <p>As fases começam com poucos pares e aumentam gradualmente. Não há limite de erros.</p>
+    <button id="closeInstructions" class="primary-btn">Entendi</button>
+  </dialog>
+
+  <dialog id="phaseDialog" class="celebration-dialog" aria-labelledby="phaseTitle">
+    <div class="celebration-icon" aria-hidden="true">✨🧠✨</div>
+    <h2 id="phaseTitle">Fase concluída!</h2>
+    <p id="phaseSummary"></p>
+    <button id="nextPhaseBtn" class="primary-btn">Próxima fase</button>
+  </dialog>
+
+  <dialog id="victoryDialog" class="celebration-dialog" aria-labelledby="victoryTitle">
+    <div class="celebration-icon" aria-hidden="true">🏆</div>
+    <h2 id="victoryTitle">Parabéns!</h2>
+    <p id="victorySummary">Você concluiu todas as fases.</p>
+    <button id="playAgainBtn" class="primary-btn">Jogar novamente</button>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
